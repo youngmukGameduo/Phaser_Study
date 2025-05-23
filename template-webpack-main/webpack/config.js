@@ -25,7 +25,7 @@ module.exports = {
                 use: "raw-loader"
             },
             {
-                test: /\.(gif|png|jpe?g|svg|xml|glsl)$/i,
+                test: /\.(gif|png|jpe?g|svg|xml|mp3|ogg)$/i,
                 use: "file-loader"
             }
         ]
@@ -35,6 +35,8 @@ module.exports = {
             cleanOnceBeforeBuildPatterns: [path.join(__dirname, "dist/**/*")]
         }),
         new webpack.DefinePlugin({
+            "process.env.NODE_ENV": JSON.stringify("development"),
+            "process.env.DEBUG": JSON.stringify("true"),
             "typeof CANVAS_RENDERER": JSON.stringify(true),
             "typeof WEBGL_RENDERER": JSON.stringify(true),
             "typeof WEBGL_DEBUG": JSON.stringify(true),
